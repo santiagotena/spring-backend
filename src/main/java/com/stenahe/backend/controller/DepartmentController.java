@@ -1,6 +1,7 @@
 package com.stenahe.backend.controller;
 
 import com.stenahe.backend.entity.Department;
+import com.stenahe.backend.error.DepartmentNotFoundException;
 import com.stenahe.backend.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -31,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
