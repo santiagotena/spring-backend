@@ -29,7 +29,7 @@ public class DepartmentServiceImpl implements DepartmentService{
     @Override
     public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
         Optional<Department> department = departmentRepository.findById(departmentId);
-        if(!department.isPresent()) {
+        if(department.isEmpty()) {
             throw new DepartmentNotFoundException("Department Not Found");
         }
         return department.get();
@@ -61,11 +61,6 @@ public class DepartmentServiceImpl implements DepartmentService{
 
         return departmentRepository.save(depDB);
     }
-
-//    @Override
-//    public Department fetchDepartmentByName(String departmentName) {
-//        return departmentRepository.findByDepartmentName(departmentName);
-//    }
 
     @Override
     public Department fetchDepartmentByName(String departmentName) {
